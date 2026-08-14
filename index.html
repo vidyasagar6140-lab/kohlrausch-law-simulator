@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kohlrausch's Law - 3D Ion Simulation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar left-sidebar">
+            <div class="panel">
+                <h2>📊 Kohlrausch's Law</h2>
+                <p class="law-equation">Λ = Λ₀ - A√C</p>
+                <hr>
+                <div class="info-box">
+                    <h3>Current Values</h3>
+                    <div class="info-row">
+                        <span>Voltage:</span>
+                        <strong id="voltageDisplay">50</strong> V
+                    </div>
+                    <div class="info-row">
+                        <span>Concentration:</span>
+                        <strong id="concentrationDisplay">0.50</strong> M
+                    </div>
+                    <div class="info-row">
+                        <span>Temperature:</span>
+                        <strong id="temperatureDisplay">298</strong> K
+                    </div>
+                    <div class="info-row">
+                        <span>Molar Conductivity:</span>
+                        <strong id="conductivityDisplay">125.4</strong> S·cm²/mol
+                    </div>
+                    <div class="info-row">
+                        <span>Ion Count:</span>
+                        <strong id="ionCountDisplay">500</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>🔬 Kohlrausch's Law - Interactive 3D Simulation</h1>
+                <p>Visualizing Ion Migration and Conductivity</p>
+            </div>
+
+            <div class="canvas-container">
+                <canvas id="simulationCanvas"></canvas>
+                <div class="overlay-info">
+                    <div class="status-badge" id="statusBadge">▶ Running</div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-group">
+                    <label>⚡ Electric Voltage (V)</label>
+                    <input type="range" id="voltageSlider" min="0" max="100" value="50">
+                    <span class="value-display">0 - 100 V</span>
+                </div>
+
+                <div class="control-group">
+                    <label>💧 Concentration (M)</label>
+                    <input type="range" id="concentrationSlider" min="0.01" max="1" step="0.01" value="0.50">
+                    <span class="value-display">0.01 - 1.0 M</span>
+                </div>
+
+                <div class="control-group">
+                    <label>🌡️ Temperature (K)</label>
+                    <input type="range" id="temperatureSlider" min="280" max="320" step="1" value="298">
+                    <span class="value-display">280 - 320 K</span>
+                </div>
+
+                <div class="button-group">
+                    <button id="playPauseBtn" class="btn btn-primary">⏸ Pause</button>
+                    <button id="resetBtn" class="btn btn-secondary">🔄 Reset</button>
+                    <button id="settingsBtn" class="btn btn-secondary">⚙️ Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar right-sidebar">
+            <div class="panel">
+                <h3>📈 Conductivity Trend</h3>
+                <canvas id="conductivityChart"></canvas>
+                <hr>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #FFD700;"></span>
+                        Cations (positive)
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #0099FF;"></span>
+                        Anions (negative)
+                    </div>
+                </div>
+                <hr>
+                <h3>⚙️ Quick Facts</h3>
+                <div class="fact">
+                    <strong>Law:</strong> Molar conductivity at infinite dilution is sum of cation and anion contributions
+                </div>
+                <div class="fact">
+                    <strong>Equation:</strong> Λ = Λ₀ - A√C
+                </div>
+                <div class="fact">
+                    <strong>Observation:</strong> Lower concentration = Higher conductivity
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/physics.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/graph.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
